@@ -7,6 +7,7 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
     <title>사고접수</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
     <style>
       *,
       *::before,
@@ -39,8 +40,8 @@
         min-height: 100dvh;
         background: var(--bg);
         font-family:
-          -apple-system, BlinkMacSystemFont, "Pretendard", "Noto Sans KR",
-          sans-serif;
+          "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+          "Noto Sans KR", sans-serif;
         color: var(--text);
         padding-bottom: 80px;
         -webkit-font-smoothing: antialiased;
@@ -149,8 +150,30 @@
         border-color: var(--p);
         background: var(--white);
       }
-      input::placeholder {
+      input::placeholder,
+      textarea::placeholder {
         color: #bbb;
+      }
+
+      textarea {
+        width: 100%;
+        padding: 12px 13px;
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius);
+        font-size: 15px;
+        font-family: inherit;
+        color: var(--text);
+        background: #fafbfc;
+        outline: none;
+        -webkit-appearance: none;
+        appearance: none;
+        transition: border-color 0.15s;
+        resize: vertical;
+        min-height: 80px;
+      }
+      textarea:focus {
+        border-color: var(--p);
+        background: var(--white);
       }
 
       .select-wrap {
@@ -274,15 +297,15 @@
     <!-- Header -->
     <div class="header">
       <h1>사고접수</h1>
-      <span class="header-badge" id="badge">필수 0/8</span>
+      <span class="header-badge" id="badge">필수 0/9</span>
     </div>
 
     <!-- Form -->
     <div class="form-wrap" id="formWrap">
       <div class="form-body">
         <!-- 로고 -->
-        <div class="section" style="text-align:center; padding:12px 0 4px;">
-          <img src="image/olympos.png" alt="OLYMPOS" style="height:64px;" />
+        <div class="section" style="text-align: center; padding: 12px 0 4px">
+          <img src="image/olympos.png" alt="OLYMPOS" style="height: 64px" />
         </div>
 
         <!-- 접수 정보 -->
@@ -291,51 +314,31 @@
           <div class="card">
             <div class="field-list">
               <div class="field">
-                <label class="field-label"
-                  >인입 구분<span class="req">*</span></label
-                >
+                <label class="field-label">1. 보험사<span class="req">*</span></label>
                 <div class="select-wrap">
-                  <select data-key="inboundType" data-required>
+                  <select data-key="insurance" data-required>
                     <option value="">선택</option>
-                    <option>전화</option>
-                    <option>카카오톡</option>
-                    <option>앱</option>
-                    <option>웹</option>
+                    <option>하나손해보험</option>
+                    <option>메리츠화재</option>
+                    <option>DB손해보험</option>
+                    <option>캐롯손해보험</option>
+                    <option>한화손해보험</option>
                     <option>기타</option>
                   </select>
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="#aaa"
-                    stroke-width="2.5"
-                    stroke-linecap="round"
-                  >
-                    <polyline points="6 9 12 15 18 9" />
-                  </svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
                 </div>
               </div>
               <div class="field">
-                <label class="field-label"
-                  >인입 일시<span class="req">*</span></label
-                >
-                <input
-                  type="datetime-local"
-                  data-key="inboundDate"
-                  data-required
-                />
+                <label class="field-label">2. 사고접수번호<span class="req">*</span></label>
+                <input type="text" data-key="accidentNo" data-required placeholder="접수번호 입력" />
               </div>
               <div class="field">
-                <label class="field-label"
-                  >사고접수번호<span class="req">*</span></label
-                >
-                <input
-                  type="text"
-                  data-key="accidentNo"
-                  data-required
-                  placeholder="ACC-2026-0001"
-                />
+                <label class="field-label">3. 사고접수 지역<span class="req">*</span></label>
+                <input type="text" data-key="accidentRegion" data-required placeholder="서울시 강남구" />
+              </div>
+              <div class="field">
+                <label class="field-label">4. 요청자 정보<span class="req">*</span></label>
+                <input type="text" data-key="requester" data-required placeholder="이름 / 연락처" />
               </div>
             </div>
           </div>
@@ -347,139 +350,45 @@
           <div class="card">
             <div class="field-list">
               <div class="field">
-                <label class="field-label"
-                  >고객명<span class="req">*</span></label
-                >
-                <input
-                  type="text"
-                  data-key="customerName"
-                  data-required
-                  placeholder="홍길동"
-                />
+                <label class="field-label">5. 고객명<span class="req">*</span></label>
+                <input type="text" data-key="customerName" data-required placeholder="홍길동" />
               </div>
               <div class="field">
-                <label class="field-label"
-                  >고객 연락처<span class="req">*</span></label
-                >
-                <input
-                  type="tel"
-                  data-key="customerPhone"
-                  data-required
-                  placeholder="010-0000-0000"
-                />
+                <label class="field-label">6. 고객 연락처<span class="req">*</span></label>
+                <input type="tel" data-key="customerPhone" data-required placeholder="01011224455" />
               </div>
             </div>
           </div>
         </div>
 
-        <!-- 이동 경로 -->
+        <!-- 차량 정보 -->
         <div class="section">
-          <div class="section-label">이동 경로</div>
+          <div class="section-label">차량 정보</div>
           <div class="card">
             <div class="field-list">
               <div class="field">
-                <label class="field-label"
-                  >출발지<span class="req">*</span></label
-                >
-                <input
-                  type="text"
-                  data-key="departure"
-                  data-required
-                  placeholder="주소 또는 장소명"
-                />
+                <label class="field-label">7. 고객 차량 번호<span class="req">*</span></label>
+                <input type="text" data-key="carNo" data-required placeholder="125호1234" />
               </div>
-              <div class="field">
-                <label class="field-label"
-                  >도착지<span class="req">*</span></label
-                >
-                <input
-                  type="text"
-                  data-key="destination"
-                  data-required
-                  placeholder="주소 또는 장소명"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 피해 차량 -->
-        <div class="section">
-          <div class="section-label">피해 차량</div>
-          <div class="card">
-            <div class="field-list">
-              <div class="field">
-                <label class="field-label"
-                  >피해차량 번호<span class="req">*</span></label
-                >
-                <input
-                  type="text"
-                  data-key="victimCarNo"
-                  data-required
-                  placeholder="12가 3456"
-                />
-              </div>
-              <div class="field">
-                <label class="field-label"
-                  >국산 / 수입산<span class="req">*</span></label
-                >
-                <div
-                  class="radio-row"
-                  data-radio="victimCarOrigin"
-                  data-required
-                >
-                  <button class="chip" data-val="국산">국산</button>
-                  <button class="chip" data-val="수입산">수입산</button>
+              <div class="half-row">
+                <div class="field">
+                  <label class="field-label">8-1. 차종<span class="req">*</span></label>
+                  <input type="text" data-key="carModel" data-required placeholder="그랜져" />
+                </div>
+                <div class="field">
+                  <label class="field-label">8-2. 유종<span class="req">*</span></label>
+                  <input type="text" data-key="carFuel" data-required placeholder="휘발유" />
                 </div>
               </div>
               <div class="half-row">
                 <div class="field">
-                  <label class="field-label">차종</label>
-                  <input
-                    type="text"
-                    data-key="victimCarModel"
-                    placeholder="쏘나타"
-                  />
+                  <label class="field-label">9-1. 연식</label>
+                  <input type="text" data-key="carYear" inputmode="numeric" placeholder="2025" />
                 </div>
                 <div class="field">
-                  <label class="field-label">연식</label>
-                  <input
-                    type="text"
-                    data-key="victimCarYear"
-                    inputmode="numeric"
-                    placeholder="2023"
-                  />
+                  <label class="field-label">9-2. 배기량</label>
+                  <input type="text" data-key="carCC" inputmode="numeric" placeholder="1999" />
                 </div>
-              </div>
-              <div class="field">
-                <label class="field-label">배기량</label>
-                <input
-                  type="text"
-                  data-key="victimCarCC"
-                  inputmode="numeric"
-                  placeholder="2000cc"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 배차 정보 -->
-        <div class="section">
-          <div class="section-label">배차 정보</div>
-          <div class="card">
-            <div class="field-list">
-              <div class="field">
-                <label class="field-label">배차 차량 번호</label>
-                <input
-                  type="text"
-                  data-key="dispatchCarNo"
-                  placeholder="12가 3456"
-                />
-              </div>
-              <div class="field">
-                <label class="field-label">고객 희망 배차 일시</label>
-                <input type="datetime-local" data-key="dispatchDate" />
               </div>
             </div>
           </div>
@@ -491,59 +400,16 @@
           <div class="card">
             <div class="field-list">
               <div class="field">
-                <label class="field-label">공업사 주소</label>
-                <input
-                  type="text"
-                  data-key="shopAddress"
-                  placeholder="공업사 주소"
-                />
+                <label class="field-label">10. 과실 유무</label>
+                <input type="text" data-key="faultRate" placeholder="30%" />
               </div>
               <div class="field">
-                <label class="field-label">공업사 연락처</label>
-                <input
-                  type="tel"
-                  data-key="shopPhone"
-                  placeholder="02-000-0000"
-                />
+                <label class="field-label">11. 지정 입고 공업사</label>
+                <input type="text" data-key="shop" placeholder="공업사 이름 / 연락처" />
               </div>
               <div class="field">
-                <label class="field-label">보험사 분류</label>
-                <div class="select-wrap">
-                  <select data-key="insuranceType">
-                    <option value="">선택</option>
-                    <option>삼성화재</option>
-                    <option>현대해상</option>
-                    <option>DB손해보험</option>
-                    <option>KB손해보험</option>
-                    <option>메리츠화재</option>
-                    <option>한화손해보험</option>
-                    <option>롯데손해보험</option>
-                    <option>MG손해보험</option>
-                    <option>흥국화재</option>
-                    <option>기타</option>
-                  </select>
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="#aaa"
-                    stroke-width="2.5"
-                    stroke-linecap="round"
-                  >
-                    <polyline points="6 9 12 15 18 9" />
-                  </svg>
-                </div>
-              </div>
-              <div class="field">
-                <label class="field-label"
-                  >과실 유무<span class="req">*</span></label
-                >
-                <div class="radio-row" data-radio="faultYn" data-required>
-                  <button class="chip" data-val="유">유</button>
-                  <button class="chip" data-val="무">무</button>
-                  <button class="chip" data-val="미정">미정</button>
-                </div>
+                <label class="field-label">12. 추가요청사항</label>
+                <textarea data-key="memo" placeholder="추가 요청사항을 입력해주세요"></textarea>
               </div>
             </div>
           </div>
@@ -587,19 +453,9 @@
       const successNo = document.getElementById("successNo");
       const resetBtn = document.getElementById("resetBtn");
 
-      // Set default datetime
-      const now = new Date();
-      now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
-      const dtStr = now.toISOString().slice(0, 16);
-      const dtInput = document.querySelector('[data-key="inboundDate"]');
-      if (dtInput) {
-        dtInput.value = dtStr;
-        formData.inboundDate = dtStr;
-      }
-
-      // Input / Select listeners
+      // Input / Select / Textarea listeners
       document
-        .querySelectorAll("input[data-key], select[data-key]")
+        .querySelectorAll("input[data-key], select[data-key], textarea[data-key]")
         .forEach((el) => {
           el.addEventListener("input", () => {
             formData[el.dataset.key] = el.value.trim();
@@ -662,7 +518,7 @@
       resetBtn.addEventListener("click", () => {
         Object.keys(formData).forEach((k) => delete formData[k]);
         document
-          .querySelectorAll("input[data-key]")
+          .querySelectorAll("input[data-key], textarea[data-key]")
           .forEach((el) => (el.value = ""));
         document
           .querySelectorAll("select[data-key]")
@@ -670,11 +526,6 @@
         document
           .querySelectorAll(".chip.on")
           .forEach((el) => el.classList.remove("on"));
-        const dtInput = document.querySelector('[data-key="inboundDate"]');
-        const now2 = new Date();
-        now2.setMinutes(now2.getMinutes() - now2.getTimezoneOffset());
-        dtInput.value = now2.toISOString().slice(0, 16);
-        formData.inboundDate = dtInput.value;
         formWrap.classList.remove("hide");
         bottomBar.style.display = "";
         successView.classList.remove("show");
