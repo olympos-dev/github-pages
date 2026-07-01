@@ -614,6 +614,10 @@
                   </div>
                 </div>
               </div>
+              <div class="field">
+                <label class="field-label">6. 고객 메모</label>
+                <textarea data-key="customerMemo" placeholder="요청사항이나 참고할 내용을 입력해주세요"></textarea>
+              </div>
             </div>
           </div>
         </div>
@@ -833,6 +837,7 @@
           rentalDistrict: formData.rentalDistrict || "",
           rentalDistrictCode: formData.rentalDistrictCode || "",
           rentalLocation: [formData.rentalRegion, formData.rentalDistrict].filter(Boolean).join(" "),
+          customerMemo: formData.customerMemo || "",
         };
 
         try {
